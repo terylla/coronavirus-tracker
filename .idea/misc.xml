@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/coronavirus-tracker-master/pom.xml" />
+        <option value="$PROJECT_DIR$/coronavirus-tracker/pom.xml" />
       </list>
     </option>
   </component>
