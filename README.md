@@ -8,7 +8,7 @@
 App shows confirmed cases, total confirmed cases, and difference of total between today and yesterday.
 ## Current progress:
  Adding deaths cases and recovered cases
-### Frameworks:
+## Frameworks:
 * Spring Boot
   * Thymeleaf
   * Lombok
