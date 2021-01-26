@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class ConfirmedController {
 
     @Autowired
     CoronaVirusDataService coronaVirusDataService;
 
-    @GetMapping("/")
+    @GetMapping("/confirmed")
     public String home(Model model) {
-        List<Stats> allStats = coronaVirusDataService.getAllStats();
+        List<Stats> allStats = coronaVirusDataService.getConfirmedStats();
         int totalReportedCases = allStats.stream().mapToInt(stat ->  stat.getLatestTotalCases()).sum();
         int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
-        model.addAttribute("locationStats", allStats);
+        model.addAttribute("Stats", allStats);
         model.addAttribute("totalReportedCases", totalReportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
 
-        return "home";
+        return "confirmed";
     }
 
 }

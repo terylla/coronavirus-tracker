@@ -2,43 +2,20 @@ package app.entities;
 
 public class Stats {
 
-//
-//    private int confirmed;
-//    private int recovered;
-//    private int deaths;
-    private String state;
+    private int confirmed;
+    private String province;
     private String country;
     private int latestTotalCases;
     private int diffFromPrevDay;
 
 
-    public Stats(){
-
+    public int getConfirmed() {
+        return confirmed;
     }
 
-//    public int getConfirmed() {
-//        return confirmed;
-//    }
-//
-//    public void setConfirmed(int confirmed) {
-//        this.confirmed = confirmed;
-//    }
-//
-//    public int getRecovered() {
-//        return recovered;
-//    }
-//
-//    public void setRecovered(int recovered) {
-//        this.recovered = recovered;
-//    }
-//
-//    public int getDeaths() {
-//        return deaths;
-//    }
-//
-//    public void setDeaths(int deaths) {
-//        this.deaths = deaths;
-//    }
+    public void setConfirmed(int confirmed) {
+        this.confirmed = confirmed;
+    }
 
 
     public int getDiffFromPrevDay() {
@@ -49,12 +26,12 @@ public class Stats {
         this.diffFromPrevDay = diffFromPrevDay;
     }
 
-    public String getState() {
-        return state;
+    public String getProvince() {
+        return province;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getCountry() {
@@ -76,7 +53,7 @@ public class Stats {
     @Override
     public String toString() {
         return "LocationStats{" +
-                "state='" + state + '\'' +
+                "state='" + province + '\'' +
                 ", country='" + country + '\'' +
                 ", latestTotalCases=" + latestTotalCases +
                 '}';

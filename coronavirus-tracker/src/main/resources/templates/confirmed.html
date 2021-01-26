@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Coronavirus Statistic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+
+<body>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Spring Boot + React</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>by Teryl La</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">COVID-19 CASES</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="confirmed">CONFIRMED</a>
+                    </li>
+                    <li>
+                        <a href="recovered">RECOVERED</a>
+                    </li>
+                    <li>
+                        <a href="deaths">DEATHS</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">SOURCES</a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled components">
+            <li>
+            <a href="#">LinkedIn</a>
+        </li>
+        <li>
+            <a href="#">GitHub</a>
+        </li>
+        </ul>
+
+    </nav>
+    <!-- Page Content -->
+    <div id="content">
+
+        <br>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </nav>
+
+            <div class="jumbotron">
+                 <br>
+                <h1>&ensp;Coronavirus Statistic</h1>
+                <p>&ensp;&ensp;Current number of cases reported across the globe</p>
+                        <hr class="my-4">
+
+               <h1 class="display-4" style="text-align:center" th:text="${totalReportedCases}"></h1>
+                <p class="lead" style="text-align:center">Total cases reported as of today</p>
+                <p>
+                    <p style="text-align:center">
+                    New cases reported since previous day:
+                    <span th:text="${totalNewCases}"></span>
+                    </p>
+                </p>
+            </div>
+
+            <table class="table table-dark">
+                <thead class="thead-light">
+                <tr>
+                    <th>&ensp;Province/State</th>
+                    <th>Country/Territory</th>
+                    <th>Total cases reported</th>
+                   <th>Changes since last day&ensp;</th>
+                </tr>
+                </thead>
+                <br>
+                <tr th:each="Stat : ${Stats}">
+                    <td th:text="${Stat.province}"></td>
+                    <td th:text="${Stat.country}"></td>
+                    <td th:text="${Stat.latestTotalCases}">0</td>
+                    <td th:text="${Stat.diffFromPrevDay}">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar, #content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -31,13 +31,13 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">COVID-19 CASES</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="http://localhost:8080/">CONFIRMED</a>
+                        <a href="confirmed">CONFIRMED</a>
                     </li>
                     <li>
-                        <a href="#">RECOVERED</a>
+                        <a href="recovered">RECOVERED</a>
                     </li>
                     <li>
-                        <a href="#">DEATHS</a>
+                        <a href="deaths">DEATHS</a>
                     </li>
                 </ul>
             </li>
@@ -48,11 +48,11 @@
 
         <ul class="list-unstyled components">
             <li>
-            <a href="#">LinkedIn</a>
-        </li>
-        <li>
-            <a href="#">GitHub</a>
-        </li>
+                <a href="#">LinkedIn</a>
+            </li>
+            <li>
+                <a href="#">GitHub</a>
+            </li>
         </ul>
 
     </nav>
@@ -69,36 +69,36 @@
             </nav>
 
             <div class="jumbotron">
-                 <br>
+                <br>
                 <h1>&ensp;Coronavirus Statistic</h1>
-                <p>&ensp;&ensp;Current number of cases reported across the globe</p>
-                        <hr class="my-4">
+                <p>&ensp;&ensp;Current number of deaths cases reported across the globe</p>
+                <hr class="my-4">
 
-                <h1 class="display-4" style="text-align:center" th:text="${totalReportedCases}"></h1>
-                <p class="lead" style="text-align:center">Total cases reported as of today</p>
+                <h1 class="display-4" style="text-align:center" th:text="${totalDeathsCases}"></h1>
+                <p class="lead" style="text-align:center">Total deaths cases reported as of today</p>
                 <p>
-                    <p style="text-align:center">
-                    New cases reported since previous day:
-                    <span th:text="${totalNewCases}"></span>
-                    </p>
+                <p style="text-align:center">
+                    New deaths cases reported since previous day:
+                    <span th:text="${totalNewDeathsCases}"></span>
+                </p>
                 </p>
             </div>
 
             <table class="table table-dark">
                 <thead class="thead-light">
                 <tr>
-                    <th>&ensp;Province/State</th>
+                    <th>Province/State</th>
                     <th>Country/Territory</th>
                     <th>Total cases reported</th>
                     <th>Changes since last day&ensp;</th>
                 </tr>
                 </thead>
                 <br>
-                <tr th:each="locationStat : ${locationStats}">
-                    <td th:text="${locationStat.state}"></td>
-                    <td th:text="${locationStat.country}"></td>
-                    <td th:text="${locationStat.latestTotalCases}">0</td>
-                    <td th:text="${locationStat.diffFromPrevDay}">0</td>
+                <tr th:each="Death : ${Deaths}">
+                    <td th:text="${Death.province}"></td>
+                    <td th:text="${Death.country}"></td>
+                    <td th:text="${Death.latestDeathsTotals}">0</td>
+                    <td th:text="${Death.deathsTotalsDiff}">0</td>
                 </tr>
             </table>
         </div>
