@@ -13,6 +13,7 @@ App shows confirmed cases, total confirmed cases, and difference of total betwee
 <br> 01/26/2021 
 - Added recovered cases page
 - Added Linkedin, Github
+<br> ...Optimizing code
 ## Frameworks:
 * Spring Boot
   * Thymeleaf
