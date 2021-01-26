@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.entities.Deaths;
 import app.entities.Stats;
 import app.services.CoronaVirusDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class ConfirmedController {
     CoronaVirusDataService coronaVirusDataService;
 
     @GetMapping("/confirmed")
-    public String home(Model model) {
+    public String confirmed(Model model) {
         List<Stats> allStats = coronaVirusDataService.getConfirmedStats();
         int totalReportedCases = allStats.stream().mapToInt(stat ->  stat.getLatestTotalCases()).sum();
         int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
@@ -26,5 +27,23 @@ public class ConfirmedController {
 
         return "confirmed";
     }
+
+    @GetMapping("/deaths")
+    public String deaths(Model model) {
+        List<Deaths> allStats = coronaVirusDataService.getDeathsStats();
+        int totalDeathsCases = allStats.stream().mapToInt(stat ->  stat.getLatestDeathsTotals()).sum();
+        int totalNewDeathsCases = allStats.stream().mapToInt(stat -> stat.getDeathsTotalsDiff()).sum();
+        model.addAttribute("Deaths", allStats);
+        model.addAttribute("totalDeathsCases", totalDeathsCases);
+        model.addAttribute("totalNewDeathsCases", totalNewDeathsCases);
+
+        return "deaths";
+    }
+
+    @GetMapping("/recovered")
+    public String recovered(Model model) {
+        return "recovered";
+    }
+
 
 }

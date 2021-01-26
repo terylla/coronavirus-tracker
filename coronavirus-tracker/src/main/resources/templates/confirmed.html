@@ -22,7 +22,7 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Spring Boot + React</h3>
+            <h3>Spring Boot + Bootstrap</h3>
         </div>
 
         <ul class="list-unstyled components">
@@ -75,10 +75,10 @@
                         <hr class="my-4">
 
                <h1 class="display-4" style="text-align:center" th:text="${totalReportedCases}"></h1>
-                <p class="lead" style="text-align:center">Total cases reported as of today</p>
+                <p class="lead" style="text-align:center">Total confirmed cases reported as of today</p>
                 <p>
                     <p style="text-align:center">
-                    New cases reported since previous day:
+                    New confirmed cases reported since previous day:
                     <span th:text="${totalNewCases}"></span>
                     </p>
                 </p>
@@ -90,7 +90,7 @@
                     <th>&ensp;Province/State</th>
                     <th>Country/Territory</th>
                     <th>Total cases reported</th>
-                   <th>Changes since last day&ensp;</th>
+                    <th>Changes since last day&ensp;</th>
                 </tr>
                 </thead>
                 <br>
