@@ -10,7 +10,9 @@ App shows confirmed cases, total confirmed cases, and difference of total betwee
 ## Current progress:
 <br> 01/23/2021 - Successfully compiled a running web page
 <br> 01/25/2021 - Added controller for service for Deaths page
-<br> .....Adding recovered cases page and optimizing code
+<br> 01/26/2021 
+ - Added recovered cases page
+ - Added Linkedin, Github
 ## Frameworks:
 * Spring Boot
   * Thymeleaf
