@@ -6,7 +6,7 @@
 
 ## Current status:
 App shows confirmed cases, total confirmed cases, and difference of total between today and yesterday.
-Sidebar that navigates to different pages: Confirmed, Deaths, Recovered, LinkedIn, GitHub, Source
+<nr> Sidebar that navigates to different pages: Confirmed, Deaths, Recovered, LinkedIn, GitHub, Source
 ## Current progress:
  Adding recovered cases page
 ## Frameworks:
