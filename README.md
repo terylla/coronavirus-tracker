@@ -8,7 +8,9 @@
 App shows confirmed cases, total confirmed cases, and difference of total between today and yesterday.
 <br> Sidebar that navigates to different pages: Confirmed, Deaths, Recovered, LinkedIn, GitHub, Source
 ## Current progress:
- Adding recovered cases page
+01/23/2021 - Successfully compiled a running web page
+01/25/2021 - Added controller for service for Deaths page
+.....Adding recovered cases page
 ## Frameworks:
 * Spring Boot
   * Thymeleaf
