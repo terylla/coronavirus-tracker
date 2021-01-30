@@ -1,6 +1,7 @@
 package app.services;
 
-import app.entities.Stats;
+import app.entities.Recovered;
+import app.entities.Confirmed;
 import app.entities.Deaths;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -14,10 +15,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,8 +26,8 @@ public class CoronaVirusDataService {
 
     private static String CONFIRMED_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
-    private List<Stats> confirmedStats = new ArrayList<>();
-    public List<Stats> getConfirmedStats() {
+    private List<Confirmed> confirmedStats = new ArrayList<>();
+    public List<Confirmed> getConfirmedStats() {
         return confirmedStats;
     }
     HttpClient client = HttpClient.newHttpClient();
@@ -37,7 +35,7 @@ public class CoronaVirusDataService {
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     public void fetchConfirmedData() throws IOException, InterruptedException {
-        List<Stats> confirmed = new ArrayList<>();
+        List<Confirmed> confirmed = new ArrayList<>();
 
         HttpRequest requestConfirmed = HttpRequest.newBuilder()
                 .uri(URI.create(CONFIRMED_DATA_URL))
@@ -46,7 +44,7 @@ public class CoronaVirusDataService {
         StringReader csvBodyReader = new StringReader(httpResponse.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
         for (CSVRecord record : records) {
-            Stats confirm = new Stats();
+            Confirmed confirm = new Confirmed();
             confirm.setProvince(record.get("Province/State"));
             confirm.setCountry(record.get("Country/Region"));
             int latestCases = Integer.parseInt(record.get(record.size() - 1));
@@ -91,6 +89,38 @@ public class CoronaVirusDataService {
         this.deathsStats = deaths;
     }
 
+    // ********************** RECOVERED CASES *********************** //
+    private static String RECOVERED_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
+
+    List<Recovered> recoveredStats = new ArrayList<>();
+    public List<Recovered> getRecoveredStats() {
+        return recoveredStats;
+    }
+
+
+
+    @PostConstruct
+    @Scheduled(cron = "* * 1 * * *")
+    public void fetchRecoveredData() throws IOException, InterruptedException {
+        List<Recovered> recovered = new ArrayList<>();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(RECOVERED_DATA_URL))
+                .build();
+        HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
+        StringReader csvBodyReader = new StringReader(httpResponse.body());
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
+        for (CSVRecord record : records){
+            Recovered recover = new Recovered();
+            recover.setProvince(record.get("Province/State"));
+            recover.setCountry(record.get("Country/Region"));
+            int latestRecovered = Integer.parseInt(record.get(record.size() -1));
+            int prevLatestRecovered = Integer.parseInt(record.get(record.size() -2));
+            recover.setLatestRecoveredTotals(latestRecovered);
+            recover.setRecoveredDiff(prevLatestRecovered);
+            recovered.add(recover);
+        }
+        this.recoveredStats = recovered;
+    }
 
 
 }

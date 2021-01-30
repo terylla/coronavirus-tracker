@@ -1,6 +1,6 @@
 package app.entities;
 
-public class Stats {
+public class Confirmed {
 
     private int confirmed;
     private String province;

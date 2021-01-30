@@ -42,16 +42,16 @@
                 </ul>
             </li>
             <li>
-                <a href="#">SOURCES</a>
+                <a href="https://github.com/CSSEGISandData">SOURCE</a>
             </li>
         </ul>
 
         <ul class="list-unstyled components">
             <li>
-                <a href="#">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/terylla/">LinkedIn</a>
             </li>
             <li>
-                <a href="#">GitHub</a>
+                <a href="https://github.com/terylla">GitHub</a>
             </li>
         </ul>
 
@@ -70,16 +70,16 @@
 
             <div class="jumbotron">
                 <br>
-                <h1>&ensp;Coronavirus Statistic</h1>
+                <h1>&ensp;Coronavirus Statistic - Recovered Cases</h1>
                 <p>&ensp;&ensp;Current number of recovered cases reported across the globe</p>
                 <hr class="my-4">
 
-                <h1 class="display-4" style="text-align:center" th:text="${totalReportedCases}"></h1>
+                <h1 class="display-4" style="text-align:center" th:text="${totalRecovered}"></h1>
                 <p class="lead" style="text-align:center">Total recovered cases reported as of today</p>
                 <p>
                 <p style="text-align:center">
                     New cases reported since previous day:
-                    <span th:text="${totalNewCases}"></span>
+                    <span th:text="${totalNewRecovered}"></span>
                 </p>
                 </p>
             </div>
@@ -94,11 +94,11 @@
                 </tr>
                 </thead>
                 <br>
-                <tr th:each="Stat : ${Stats}">
-                    <td th:text="${Stat.state}"></td>
-                    <td th:text="${Stat.country}"></td>
-                    <td th:text="${Stat.confirmed}">0</td>
-                    <td th:text="${Stat.diffFromPrevDay}">0</td>
+                <tr th:each="rec : ${Recovered}">
+                    <td th:text="${rec.province}"></td>
+                    <td th:text="${rec.country}"></td>
+                    <td th:text="${rec.latestRecoveredTotals}">0</td>
+                    <td th:text="${rec.recoveredDiff}">0</td>
                 </tr>
             </table>
         </div>
