@@ -3,6 +3,7 @@
 # In Progress
 <br> Coronavirus tracker webpage that pulls data from CSV files 
 <br> Stats are pulled from here: https://github.com/CSSEGISandData/COVID-19
+<br> /confirms OR /deaths OR /recovered to load the corresponding page
 
 ## Current status:
 App shows confirmed cases, total confirmed cases, and difference of total between today and yesterday.
@@ -10,7 +11,12 @@ App shows confirmed cases, total confirmed cases, and difference of total betwee
 ## Current progress:
 <br> 01/23/2021 - Successfully compiled a running web page
 <br> 01/25/2021 - Added controller for service for Deaths page
-<br> .....Adding recovered cases page and optimizing code
+<br> 01/26/2021 
+- Added recovered cases page
+- Added Linkedin, Github
+
+<br> ...Optimizing code
+
 ## Frameworks:
 * Spring Boot
   * Thymeleaf
